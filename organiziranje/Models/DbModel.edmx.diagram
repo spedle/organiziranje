@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3daf17494acb4c8092de313e1b3480ea" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.certifikat" Width="1.5" PointX="8.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.certifikat_osoblje" Width="1.5" PointX="11" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.evidencija_oprema" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.evidencija_osoblje" Width="1.5" PointX="11" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.natjecaj" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.natjecaj_ponuda" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.natjecaj_transakcija_oprema" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.natjecaj_transakcija_osoblje" Width="1.5" PointX="13.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.normativ_oprema" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.normativ_osoblje" Width="1.5" PointX="11" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.oprema" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.osoblje" Width="1.5" PointX="8.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.osoblje_zanimanje" Width="1.5" PointX="14" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.posao" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.posao_transakcija_oprema" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.posao_transakcija_osoblje" Width="1.5" PointX="13.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.posao_usluga" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.skladiste" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.skladiste_opreme" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.transakcija_oprema" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.transakcija_osoblje" Width="1.5" PointX="11" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.unajmljena_oprema" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.usluga" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.usluga_kategorija" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.zanimanje" Width="1.5" PointX="11.75" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__certifika__certi__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__certifika__osobl__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__evidencij__oprem__6AEFE058" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__evidencij__posao__6BE40491" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__evidencij__osobl__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__evidencij__posao__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__natjecaj___natje__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__natjecaj___natje__32AB8735" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__natjecaj___natje__7849DB76" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__natjecaj___trans__793DFFAF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__natjecaj___trans__339FAB6E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__normativ___oprem__74794A92" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__normativ___uslug__756D6ECB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__normativ___osobl__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__normativ___uslug__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__oprema__referent__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__skladiste__oprem__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__transakci__oprem__6442E2C9" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__unajmljen__oprem__6166761E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__osoblje_p__osobl__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__transakci__osobl__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__osoblje_p__zanimanje__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__posao_tra__posao__4D5F7D71" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__posao_tra__posao__671F4F74" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__posao_usl__posao__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__posao_tra__trans__681373AD" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__posao_tra__trans__4E53A1AA" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__posao_usl__uslug__3F115E1A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__skladiste__sklad__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__usluga__tip__59C55456" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+﻿@model organiziranje.Models.osoblje_zanimanje
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>osoblje_zanimanje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.osoblje.ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.osoblje.ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zanimanje.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zanimanje.naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,56 @@
+﻿@model organiziranje.Models.natjecaj_ponuda
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>natjecaj_ponuda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.broj_osoblja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.broj_osoblja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iznos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iznos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dobitna_ponuda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dobitna_ponuda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.natjecaj.raspisala_osoba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.natjecaj.raspisala_osoba)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

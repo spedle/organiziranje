@@ -1,0 +1,51 @@
+﻿@model IEnumerable<organiziranje.Models.evidencija_osoblje>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.broj_sati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.osoblje.ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.posao.grad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.broj_sati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.osoblje.ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.posao.grad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<organiziranje.Models.oprema>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inventarni_broj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kupljena_vrijednost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.knjigovodstvena_vrijednost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dostupna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.broj_radnih_sati)
+        </th>
+        <th>
+            @Html.DisplayName("Referentni tip")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inventarni_broj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kupljena_vrijednost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.knjigovodstvena_vrijednost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dostupna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.broj_radnih_sati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oprema2.naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

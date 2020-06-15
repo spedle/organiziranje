@@ -1,0 +1,50 @@
+﻿@model organiziranje.Models.evidencija_oprema
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>evidencija_oprema</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.broj_sati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.broj_sati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oprema.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oprema.naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posao.grad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posao.grad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

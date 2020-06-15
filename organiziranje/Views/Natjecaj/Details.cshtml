@@ -1,0 +1,74 @@
+﻿@model organiziranje.Models.natjecaj
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>natjecaj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.raspisala_osoba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.raspisala_osoba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iznos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iznos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datum_od)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datum_od)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datum_do)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datum_do)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pobjednik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pobjednik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prihvacen_iznos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prihvacen_iznos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

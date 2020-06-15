@@ -1,0 +1,82 @@
+﻿@model organiziranje.Models.oprema
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>oprema</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inventarni_broj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inventarni_broj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kupljena_vrijednost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kupljena_vrijednost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.knjigovodstvena_vrijednost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.knjigovodstvena_vrijednost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dostupna)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dostupna)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.broj_radnih_sati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.broj_radnih_sati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oprema2.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oprema2.naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

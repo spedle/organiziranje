@@ -1,0 +1,66 @@
+﻿@model organiziranje.Models.posao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>posao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.grad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lokacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lokacija)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sklopljen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sklopljen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zavrsen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zavrsen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trajanje_od)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trajanje_od)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trajanje_do)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trajanje_do)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

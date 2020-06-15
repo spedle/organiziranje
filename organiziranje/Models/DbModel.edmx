@@ -1,0 +1,1870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="certifikat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="certifikat_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="certifikat_id" Type="int" Nullable="false" />
+          <Property Name="osoblje_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="evidencija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="oprema_id" Type="int" Nullable="false" />
+          <Property Name="posao_id" Type="int" Nullable="false" />
+          <Property Name="dan" Type="tinyint" Nullable="false" />
+          <Property Name="broj_sati" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="evidencija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="osoblje_id" Type="int" Nullable="false" />
+          <Property Name="posao_id" Type="int" Nullable="false" />
+          <Property Name="dan" Type="tinyint" Nullable="false" />
+          <Property Name="broj_sati" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="natjecaj">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="raspisala_osoba" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="iznos" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="datum_od" Type="date" Nullable="false" />
+          <Property Name="datum_do" Type="date" Nullable="false" />
+          <Property Name="pobjednik" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prihvacen_iznos" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="natjecaj_ponuda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="broj_osoblja" Type="int" Nullable="false" />
+          <Property Name="iznos" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="natjecaj_id" Type="int" Nullable="false" />
+          <Property Name="dobitna_ponuda" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="natjecaj_transakcija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="natjecaj_id" Type="int" Nullable="false" />
+          <Property Name="transakcija_oprema_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="natjecaj_transakcija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="natjecaj_id" Type="int" Nullable="false" />
+          <Property Name="transakcija_osoblje_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="normativ_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="oprema_id" Type="int" Nullable="false" />
+          <Property Name="usluga_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="normativ_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="osoblje_id" Type="int" Nullable="false" />
+          <Property Name="usluga_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="inventarni_broj" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kupljena_vrijednost" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="knjigovodstvena_vrijednost" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dostupna" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="broj_radnih_sati" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="referentni_tip" Type="int" />
+        </EntityType>
+        <EntityType Name="osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prezime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="datum_rodjenja" Type="date" Nullable="false" />
+          <Property Name="zauzet" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="osoblje_zanimanje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="osoblje_id" Type="int" Nullable="false" />
+          <Property Name="zanimanje_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="posao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lokacija" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="sklopljen" Type="varchar" MaxLength="1" />
+          <Property Name="zavrsen" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="trajanje_od" Type="datetime" Nullable="false" />
+          <Property Name="trajanje_do" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="posao_transakcija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="posao_id" Type="int" Nullable="false" />
+          <Property Name="transakcija_oprema_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="posao_transakcija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="posao_id" Type="int" Nullable="false" />
+          <Property Name="transakcija_osoblje_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="posao_usluga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="posao_id" Type="int" Nullable="false" />
+          <Property Name="usluga_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skladiste">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="adresa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="skladiste_opreme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skladiste_id" Type="int" Nullable="false" />
+          <Property Name="oprema_id" Type="int" Nullable="false" />
+          <Property Name="broj_na_polici" Type="int" Nullable="false" />
+          <Property Name="polica" Type="int" Nullable="false" />
+          <Property Name="stalak" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="transakcija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+          <Property Name="prihod" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="trosak" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="oprema_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transakcija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datum" Type="date" Nullable="false" />
+          <Property Name="prihod" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="trosak" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="osoblje_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unajmljena_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="koristenje_od" Type="date" Nullable="false" />
+          <Property Name="koristenje_do" Type="date" Nullable="false" />
+          <Property Name="tip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="osoba" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="oprema_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usluga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tip" Type="int" Nullable="false" />
+          <Property Name="cijena" Type="float" Nullable="false" />
+          <Property Name="opis" Type="text" />
+        </EntityType>
+        <EntityType Name="usluga_kategorija">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zanimanje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="opis" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__certifika__certi__66603565">
+          <End Role="certifikat" Type="Self.certifikat" Multiplicity="1" />
+          <End Role="certifikat_osoblje" Type="Self.certifikat_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certifikat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="certifikat_osoblje">
+              <PropertyRef Name="certifikat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__certifika__osobl__6754599E">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="certifikat_osoblje" Type="Self.certifikat_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="certifikat_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__oprem__6AEFE058">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="evidencija_oprema" Type="Self.evidencija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__osobl__45BE5BA9">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="evidencija_osoblje" Type="Self.evidencija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__posao__46B27FE2">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="evidencija_osoblje" Type="Self.evidencija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_osoblje">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__posao__6BE40491">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="evidencija_oprema" Type="Self.evidencija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_oprema">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___natje__2FCF1A8A">
+          <End Role="natjecaj" Type="Self.natjecaj" Multiplicity="1" />
+          <End Role="natjecaj_ponuda" Type="Self.natjecaj_ponuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="natjecaj">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_ponuda">
+              <PropertyRef Name="natjecaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___natje__32AB8735">
+          <End Role="natjecaj" Type="Self.natjecaj" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_osoblje" Type="Self.natjecaj_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="natjecaj">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_osoblje">
+              <PropertyRef Name="natjecaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___natje__7849DB76">
+          <End Role="natjecaj" Type="Self.natjecaj" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_oprema" Type="Self.natjecaj_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="natjecaj">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_oprema">
+              <PropertyRef Name="natjecaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___trans__339FAB6E">
+          <End Role="transakcija_osoblje" Type="Self.transakcija_osoblje" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_osoblje" Type="Self.natjecaj_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_osoblje">
+              <PropertyRef Name="transakcija_osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___trans__793DFFAF">
+          <End Role="transakcija_oprema" Type="Self.transakcija_oprema" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_oprema" Type="Self.natjecaj_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_oprema">
+              <PropertyRef Name="transakcija_oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___oprem__74794A92">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="normativ_oprema" Type="Self.normativ_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___osobl__55009F39">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="normativ_osoblje" Type="Self.normativ_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___uslug__55F4C372">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1" />
+          <End Role="normativ_osoblje" Type="Self.normativ_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_osoblje">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___uslug__756D6ECB">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1" />
+          <End Role="normativ_oprema" Type="Self.normativ_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_oprema">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__oprema__referent__5E8A0973">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="0..1" />
+          <End Role="oprema1" Type="Self.oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="oprema1">
+              <PropertyRef Name="referentni_tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__osoblje_p__osobl__60A75C0F">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="osoblje_zanimanje" Type="Self.osoblje_zanimanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="osoblje_zanimanje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__osoblje_p__zanimanje__619B8048">
+          <End Role="zanimanje" Type="Self.zanimanje" Multiplicity="1" />
+          <End Role="osoblje_zanimanje" Type="Self.osoblje_zanimanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zanimanje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="osoblje_zanimanje">
+              <PropertyRef Name="zanimanje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__posao__4D5F7D71">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="posao_transakcija_osoblje" Type="Self.posao_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_osoblje">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__posao__671F4F74">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="posao_transakcija_oprema" Type="Self.posao_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_oprema">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__trans__4E53A1AA">
+          <End Role="transakcija_osoblje" Type="Self.transakcija_osoblje" Multiplicity="1" />
+          <End Role="posao_transakcija_osoblje" Type="Self.posao_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_osoblje">
+              <PropertyRef Name="transakcija_osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__trans__681373AD">
+          <End Role="transakcija_oprema" Type="Self.transakcija_oprema" Multiplicity="1" />
+          <End Role="posao_transakcija_oprema" Type="Self.posao_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_oprema">
+              <PropertyRef Name="transakcija_oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_usl__posao__3E1D39E1">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="posao_usluga" Type="Self.posao_usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_usluga">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_usl__uslug__3F115E1A">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1" />
+          <End Role="posao_usluga" Type="Self.posao_usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_usluga">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__skladiste__oprem__7C1A6C5A">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="skladiste_opreme" Type="Self.skladiste_opreme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skladiste_opreme">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__skladiste__sklad__7D0E9093">
+          <End Role="skladiste" Type="Self.skladiste" Multiplicity="1" />
+          <End Role="skladiste_opreme" Type="Self.skladiste_opreme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skladiste">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skladiste_opreme">
+              <PropertyRef Name="skladiste_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transakci__oprem__6442E2C9">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="transakcija_oprema" Type="Self.transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transakcija_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transakci__osobl__787EE5A0">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="transakcija_osoblje" Type="Self.transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transakcija_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__unajmljen__oprem__6166761E">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="unajmljena_oprema" Type="Self.unajmljena_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="unajmljena_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__usluga__tip__59C55456">
+          <End Role="usluga_kategorija" Type="Self.usluga_kategorija" Multiplicity="1" />
+          <End Role="usluga" Type="Self.usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga_kategorija">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usluga">
+              <PropertyRef Name="tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="certifikat" EntityType="Self.certifikat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="certifikat_osoblje" EntityType="Self.certifikat_osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evidencija_oprema" EntityType="Self.evidencija_oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="evidencija_osoblje" EntityType="Self.evidencija_osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="natjecaj" EntityType="Self.natjecaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="natjecaj_ponuda" EntityType="Self.natjecaj_ponuda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="natjecaj_transakcija_oprema" EntityType="Self.natjecaj_transakcija_oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="natjecaj_transakcija_osoblje" EntityType="Self.natjecaj_transakcija_osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="normativ_oprema" EntityType="Self.normativ_oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="normativ_osoblje" EntityType="Self.normativ_osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="oprema" EntityType="Self.oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="osoblje" EntityType="Self.osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="osoblje_zanimanje" EntityType="Self.osoblje_zanimanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="posao" EntityType="Self.posao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="posao_transakcija_oprema" EntityType="Self.posao_transakcija_oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="posao_transakcija_osoblje" EntityType="Self.posao_transakcija_osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="posao_usluga" EntityType="Self.posao_usluga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skladiste" EntityType="Self.skladiste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="skladiste_opreme" EntityType="Self.skladiste_opreme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transakcija_oprema" EntityType="Self.transakcija_oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transakcija_osoblje" EntityType="Self.transakcija_osoblje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="unajmljena_oprema" EntityType="Self.unajmljena_oprema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usluga" EntityType="Self.usluga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usluga_kategorija" EntityType="Self.usluga_kategorija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zanimanje" EntityType="Self.zanimanje" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__certifika__certi__66603565" Association="Self.FK__certifika__certi__66603565">
+            <End Role="certifikat" EntitySet="certifikat" />
+            <End Role="certifikat_osoblje" EntitySet="certifikat_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__certifika__osobl__6754599E" Association="Self.FK__certifika__osobl__6754599E">
+            <End Role="osoblje" EntitySet="osoblje" />
+            <End Role="certifikat_osoblje" EntitySet="certifikat_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__oprem__6AEFE058" Association="Self.FK__evidencij__oprem__6AEFE058">
+            <End Role="oprema" EntitySet="oprema" />
+            <End Role="evidencija_oprema" EntitySet="evidencija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__osobl__45BE5BA9" Association="Self.FK__evidencij__osobl__45BE5BA9">
+            <End Role="osoblje" EntitySet="osoblje" />
+            <End Role="evidencija_osoblje" EntitySet="evidencija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__posao__46B27FE2" Association="Self.FK__evidencij__posao__46B27FE2">
+            <End Role="posao" EntitySet="posao" />
+            <End Role="evidencija_osoblje" EntitySet="evidencija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__posao__6BE40491" Association="Self.FK__evidencij__posao__6BE40491">
+            <End Role="posao" EntitySet="posao" />
+            <End Role="evidencija_oprema" EntitySet="evidencija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___natje__2FCF1A8A" Association="Self.FK__natjecaj___natje__2FCF1A8A">
+            <End Role="natjecaj" EntitySet="natjecaj" />
+            <End Role="natjecaj_ponuda" EntitySet="natjecaj_ponuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___natje__32AB8735" Association="Self.FK__natjecaj___natje__32AB8735">
+            <End Role="natjecaj" EntitySet="natjecaj" />
+            <End Role="natjecaj_transakcija_osoblje" EntitySet="natjecaj_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___natje__7849DB76" Association="Self.FK__natjecaj___natje__7849DB76">
+            <End Role="natjecaj" EntitySet="natjecaj" />
+            <End Role="natjecaj_transakcija_oprema" EntitySet="natjecaj_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___trans__339FAB6E" Association="Self.FK__natjecaj___trans__339FAB6E">
+            <End Role="transakcija_osoblje" EntitySet="transakcija_osoblje" />
+            <End Role="natjecaj_transakcija_osoblje" EntitySet="natjecaj_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___trans__793DFFAF" Association="Self.FK__natjecaj___trans__793DFFAF">
+            <End Role="transakcija_oprema" EntitySet="transakcija_oprema" />
+            <End Role="natjecaj_transakcija_oprema" EntitySet="natjecaj_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___oprem__74794A92" Association="Self.FK__normativ___oprem__74794A92">
+            <End Role="oprema" EntitySet="oprema" />
+            <End Role="normativ_oprema" EntitySet="normativ_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___osobl__55009F39" Association="Self.FK__normativ___osobl__55009F39">
+            <End Role="osoblje" EntitySet="osoblje" />
+            <End Role="normativ_osoblje" EntitySet="normativ_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___uslug__55F4C372" Association="Self.FK__normativ___uslug__55F4C372">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="normativ_osoblje" EntitySet="normativ_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___uslug__756D6ECB" Association="Self.FK__normativ___uslug__756D6ECB">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="normativ_oprema" EntitySet="normativ_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__oprema__referent__5E8A0973" Association="Self.FK__oprema__referent__5E8A0973">
+            <End Role="oprema" EntitySet="oprema" />
+            <End Role="oprema1" EntitySet="oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__osoblje_p__osobl__60A75C0F" Association="Self.FK__osoblje_p__osobl__60A75C0F">
+            <End Role="osoblje" EntitySet="osoblje" />
+            <End Role="osoblje_zanimanje" EntitySet="osoblje_zanimanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__osoblje_p__zanimanje__619B8048" Association="Self.FK__osoblje_p__zanimanje__619B8048">
+            <End Role="zanimanje" EntitySet="zanimanje" />
+            <End Role="osoblje_zanimanje" EntitySet="osoblje_zanimanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__posao__4D5F7D71" Association="Self.FK__posao_tra__posao__4D5F7D71">
+            <End Role="posao" EntitySet="posao" />
+            <End Role="posao_transakcija_osoblje" EntitySet="posao_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__posao__671F4F74" Association="Self.FK__posao_tra__posao__671F4F74">
+            <End Role="posao" EntitySet="posao" />
+            <End Role="posao_transakcija_oprema" EntitySet="posao_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__trans__4E53A1AA" Association="Self.FK__posao_tra__trans__4E53A1AA">
+            <End Role="transakcija_osoblje" EntitySet="transakcija_osoblje" />
+            <End Role="posao_transakcija_osoblje" EntitySet="posao_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__trans__681373AD" Association="Self.FK__posao_tra__trans__681373AD">
+            <End Role="transakcija_oprema" EntitySet="transakcija_oprema" />
+            <End Role="posao_transakcija_oprema" EntitySet="posao_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_usl__posao__3E1D39E1" Association="Self.FK__posao_usl__posao__3E1D39E1">
+            <End Role="posao" EntitySet="posao" />
+            <End Role="posao_usluga" EntitySet="posao_usluga" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_usl__uslug__3F115E1A" Association="Self.FK__posao_usl__uslug__3F115E1A">
+            <End Role="usluga" EntitySet="usluga" />
+            <End Role="posao_usluga" EntitySet="posao_usluga" />
+          </AssociationSet>
+          <AssociationSet Name="FK__skladiste__oprem__7C1A6C5A" Association="Self.FK__skladiste__oprem__7C1A6C5A">
+            <End Role="oprema" EntitySet="oprema" />
+            <End Role="skladiste_opreme" EntitySet="skladiste_opreme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__skladiste__sklad__7D0E9093" Association="Self.FK__skladiste__sklad__7D0E9093">
+            <End Role="skladiste" EntitySet="skladiste" />
+            <End Role="skladiste_opreme" EntitySet="skladiste_opreme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transakci__oprem__6442E2C9" Association="Self.FK__transakci__oprem__6442E2C9">
+            <End Role="oprema" EntitySet="oprema" />
+            <End Role="transakcija_oprema" EntitySet="transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transakci__osobl__787EE5A0" Association="Self.FK__transakci__osobl__787EE5A0">
+            <End Role="osoblje" EntitySet="osoblje" />
+            <End Role="transakcija_osoblje" EntitySet="transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__unajmljen__oprem__6166761E" Association="Self.FK__unajmljen__oprem__6166761E">
+            <End Role="oprema" EntitySet="oprema" />
+            <End Role="unajmljena_oprema" EntitySet="unajmljena_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usluga__tip__59C55456" Association="Self.FK__usluga__tip__59C55456">
+            <End Role="usluga_kategorija" EntitySet="usluga_kategorija" />
+            <End Role="usluga" EntitySet="usluga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="certifikat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="certifikat_osoblje" Relationship="Self.FK__certifika__certi__66603565" FromRole="certifikat" ToRole="certifikat_osoblje" />
+        </EntityType>
+        <EntityType Name="certifikat_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="certifikat_id" Type="Int32" Nullable="false" />
+          <Property Name="osoblje_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="certifikat" Relationship="Self.FK__certifika__certi__66603565" FromRole="certifikat_osoblje" ToRole="certifikat" />
+          <NavigationProperty Name="osoblje" Relationship="Self.FK__certifika__osobl__6754599E" FromRole="certifikat_osoblje" ToRole="osoblje" />
+        </EntityType>
+        <EntityType Name="evidencija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oprema_id" Type="Int32" Nullable="false" />
+          <Property Name="posao_id" Type="Int32" Nullable="false" />
+          <Property Name="dan" Type="Byte" Nullable="false" />
+          <Property Name="broj_sati" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="oprema" Relationship="Self.FK__evidencij__oprem__6AEFE058" FromRole="evidencija_oprema" ToRole="oprema" />
+          <NavigationProperty Name="posao" Relationship="Self.FK__evidencij__posao__6BE40491" FromRole="evidencija_oprema" ToRole="posao" />
+        </EntityType>
+        <EntityType Name="evidencija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="osoblje_id" Type="Int32" Nullable="false" />
+          <Property Name="posao_id" Type="Int32" Nullable="false" />
+          <Property Name="dan" Type="Byte" Nullable="false" />
+          <Property Name="broj_sati" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="osoblje" Relationship="Self.FK__evidencij__osobl__45BE5BA9" FromRole="evidencija_osoblje" ToRole="osoblje" />
+          <NavigationProperty Name="posao" Relationship="Self.FK__evidencij__posao__46B27FE2" FromRole="evidencija_osoblje" ToRole="posao" />
+        </EntityType>
+        <EntityType Name="natjecaj">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="raspisala_osoba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="iznos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="datum_od" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="datum_do" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pobjednik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prihvacen_iznos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="natjecaj_ponuda" Relationship="Self.FK__natjecaj___natje__2FCF1A8A" FromRole="natjecaj" ToRole="natjecaj_ponuda" />
+          <NavigationProperty Name="natjecaj_transakcija_osoblje" Relationship="Self.FK__natjecaj___natje__32AB8735" FromRole="natjecaj" ToRole="natjecaj_transakcija_osoblje" />
+          <NavigationProperty Name="natjecaj_transakcija_oprema" Relationship="Self.FK__natjecaj___natje__7849DB76" FromRole="natjecaj" ToRole="natjecaj_transakcija_oprema" />
+        </EntityType>
+        <EntityType Name="natjecaj_ponuda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="broj_osoblja" Type="Int32" Nullable="false" />
+          <Property Name="iznos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="natjecaj_id" Type="Int32" Nullable="false" />
+          <Property Name="dobitna_ponuda" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="natjecaj" Relationship="Self.FK__natjecaj___natje__2FCF1A8A" FromRole="natjecaj_ponuda" ToRole="natjecaj" />
+        </EntityType>
+        <EntityType Name="natjecaj_transakcija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="natjecaj_id" Type="Int32" Nullable="false" />
+          <Property Name="transakcija_oprema_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="natjecaj" Relationship="Self.FK__natjecaj___natje__7849DB76" FromRole="natjecaj_transakcija_oprema" ToRole="natjecaj" />
+          <NavigationProperty Name="transakcija_oprema" Relationship="Self.FK__natjecaj___trans__793DFFAF" FromRole="natjecaj_transakcija_oprema" ToRole="transakcija_oprema" />
+        </EntityType>
+        <EntityType Name="natjecaj_transakcija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="natjecaj_id" Type="Int32" Nullable="false" />
+          <Property Name="transakcija_osoblje_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="natjecaj" Relationship="Self.FK__natjecaj___natje__32AB8735" FromRole="natjecaj_transakcija_osoblje" ToRole="natjecaj" />
+          <NavigationProperty Name="transakcija_osoblje" Relationship="Self.FK__natjecaj___trans__339FAB6E" FromRole="natjecaj_transakcija_osoblje" ToRole="transakcija_osoblje" />
+        </EntityType>
+        <EntityType Name="normativ_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="oprema_id" Type="Int32" Nullable="false" />
+          <Property Name="usluga_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="oprema" Relationship="Self.FK__normativ___oprem__74794A92" FromRole="normativ_oprema" ToRole="oprema" />
+          <NavigationProperty Name="usluga" Relationship="Self.FK__normativ___uslug__756D6ECB" FromRole="normativ_oprema" ToRole="usluga" />
+        </EntityType>
+        <EntityType Name="normativ_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="osoblje_id" Type="Int32" Nullable="false" />
+          <Property Name="usluga_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="osoblje" Relationship="Self.FK__normativ___osobl__55009F39" FromRole="normativ_osoblje" ToRole="osoblje" />
+          <NavigationProperty Name="usluga" Relationship="Self.FK__normativ___uslug__55F4C372" FromRole="normativ_osoblje" ToRole="usluga" />
+        </EntityType>
+        <EntityType Name="oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inventarni_broj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kupljena_vrijednost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="knjigovodstvena_vrijednost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dostupna" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="broj_radnih_sati" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="referentni_tip" Type="Int32" />
+          <NavigationProperty Name="evidencija_oprema" Relationship="Self.FK__evidencij__oprem__6AEFE058" FromRole="oprema" ToRole="evidencija_oprema" />
+          <NavigationProperty Name="normativ_oprema" Relationship="Self.FK__normativ___oprem__74794A92" FromRole="oprema" ToRole="normativ_oprema" />
+          <NavigationProperty Name="oprema1" Relationship="Self.FK__oprema__referent__5E8A0973" FromRole="oprema" ToRole="oprema1" />
+          <NavigationProperty Name="oprema2" Relationship="Self.FK__oprema__referent__5E8A0973" FromRole="oprema1" ToRole="oprema" />
+          <NavigationProperty Name="skladiste_opreme" Relationship="Self.FK__skladiste__oprem__7C1A6C5A" FromRole="oprema" ToRole="skladiste_opreme" />
+          <NavigationProperty Name="transakcija_oprema" Relationship="Self.FK__transakci__oprem__6442E2C9" FromRole="oprema" ToRole="transakcija_oprema" />
+          <NavigationProperty Name="unajmljena_oprema" Relationship="Self.FK__unajmljen__oprem__6166761E" FromRole="oprema" ToRole="unajmljena_oprema" />
+        </EntityType>
+        <EntityType Name="osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datum_rodjenja" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="zauzet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="certifikat_osoblje" Relationship="Self.FK__certifika__osobl__6754599E" FromRole="osoblje" ToRole="certifikat_osoblje" />
+          <NavigationProperty Name="evidencija_osoblje" Relationship="Self.FK__evidencij__osobl__45BE5BA9" FromRole="osoblje" ToRole="evidencija_osoblje" />
+          <NavigationProperty Name="normativ_osoblje" Relationship="Self.FK__normativ___osobl__55009F39" FromRole="osoblje" ToRole="normativ_osoblje" />
+          <NavigationProperty Name="osoblje_zanimanje" Relationship="Self.FK__osoblje_p__osobl__60A75C0F" FromRole="osoblje" ToRole="osoblje_zanimanje" />
+          <NavigationProperty Name="transakcija_osoblje" Relationship="Self.FK__transakci__osobl__787EE5A0" FromRole="osoblje" ToRole="transakcija_osoblje" />
+        </EntityType>
+        <EntityType Name="osoblje_zanimanje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="osoblje_id" Type="Int32" Nullable="false" />
+          <Property Name="zanimanje_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="osoblje" Relationship="Self.FK__osoblje_p__osobl__60A75C0F" FromRole="osoblje_zanimanje" ToRole="osoblje" />
+          <NavigationProperty Name="zanimanje" Relationship="Self.FK__osoblje_p__zanimanje__619B8048" FromRole="osoblje_zanimanje" ToRole="zanimanje" />
+        </EntityType>
+        <EntityType Name="posao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lokacija" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sklopljen" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="zavrsen" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trajanje_od" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="trajanje_do" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="evidencija_oprema" Relationship="Self.FK__evidencij__posao__6BE40491" FromRole="posao" ToRole="evidencija_oprema" />
+          <NavigationProperty Name="evidencija_osoblje" Relationship="Self.FK__evidencij__posao__46B27FE2" FromRole="posao" ToRole="evidencija_osoblje" />
+          <NavigationProperty Name="posao_transakcija_osoblje" Relationship="Self.FK__posao_tra__posao__4D5F7D71" FromRole="posao" ToRole="posao_transakcija_osoblje" />
+          <NavigationProperty Name="posao_transakcija_oprema" Relationship="Self.FK__posao_tra__posao__671F4F74" FromRole="posao" ToRole="posao_transakcija_oprema" />
+          <NavigationProperty Name="posao_usluga" Relationship="Self.FK__posao_usl__posao__3E1D39E1" FromRole="posao" ToRole="posao_usluga" />
+        </EntityType>
+        <EntityType Name="posao_transakcija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="posao_id" Type="Int32" Nullable="false" />
+          <Property Name="transakcija_oprema_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="posao" Relationship="Self.FK__posao_tra__posao__671F4F74" FromRole="posao_transakcija_oprema" ToRole="posao" />
+          <NavigationProperty Name="transakcija_oprema" Relationship="Self.FK__posao_tra__trans__681373AD" FromRole="posao_transakcija_oprema" ToRole="transakcija_oprema" />
+        </EntityType>
+        <EntityType Name="posao_transakcija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="posao_id" Type="Int32" Nullable="false" />
+          <Property Name="transakcija_osoblje_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="posao" Relationship="Self.FK__posao_tra__posao__4D5F7D71" FromRole="posao_transakcija_osoblje" ToRole="posao" />
+          <NavigationProperty Name="transakcija_osoblje" Relationship="Self.FK__posao_tra__trans__4E53A1AA" FromRole="posao_transakcija_osoblje" ToRole="transakcija_osoblje" />
+        </EntityType>
+        <EntityType Name="posao_usluga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="posao_id" Type="Int32" Nullable="false" />
+          <Property Name="usluga_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="posao" Relationship="Self.FK__posao_usl__posao__3E1D39E1" FromRole="posao_usluga" ToRole="posao" />
+          <NavigationProperty Name="usluga" Relationship="Self.FK__posao_usl__uslug__3F115E1A" FromRole="posao_usluga" ToRole="usluga" />
+        </EntityType>
+        <EntityType Name="skladiste">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="skladiste_opreme" Relationship="Self.FK__skladiste__sklad__7D0E9093" FromRole="skladiste" ToRole="skladiste_opreme" />
+        </EntityType>
+        <EntityType Name="skladiste_opreme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skladiste_id" Type="Int32" Nullable="false" />
+          <Property Name="oprema_id" Type="Int32" Nullable="false" />
+          <Property Name="broj_na_polici" Type="Int32" Nullable="false" />
+          <Property Name="polica" Type="Int32" Nullable="false" />
+          <Property Name="stalak" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="oprema" Relationship="Self.FK__skladiste__oprem__7C1A6C5A" FromRole="skladiste_opreme" ToRole="oprema" />
+          <NavigationProperty Name="skladiste" Relationship="Self.FK__skladiste__sklad__7D0E9093" FromRole="skladiste_opreme" ToRole="skladiste" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="transakcija_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="prihod" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="trosak" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="oprema_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="natjecaj_transakcija_oprema" Relationship="Self.FK__natjecaj___trans__793DFFAF" FromRole="transakcija_oprema" ToRole="natjecaj_transakcija_oprema" />
+          <NavigationProperty Name="oprema" Relationship="Self.FK__transakci__oprem__6442E2C9" FromRole="transakcija_oprema" ToRole="oprema" />
+          <NavigationProperty Name="posao_transakcija_oprema" Relationship="Self.FK__posao_tra__trans__681373AD" FromRole="transakcija_oprema" ToRole="posao_transakcija_oprema" />
+        </EntityType>
+        <EntityType Name="transakcija_osoblje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="prihod" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="trosak" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="osoblje_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="natjecaj_transakcija_osoblje" Relationship="Self.FK__natjecaj___trans__339FAB6E" FromRole="transakcija_osoblje" ToRole="natjecaj_transakcija_osoblje" />
+          <NavigationProperty Name="osoblje" Relationship="Self.FK__transakci__osobl__787EE5A0" FromRole="transakcija_osoblje" ToRole="osoblje" />
+          <NavigationProperty Name="posao_transakcija_osoblje" Relationship="Self.FK__posao_tra__trans__4E53A1AA" FromRole="transakcija_osoblje" ToRole="posao_transakcija_osoblje" />
+        </EntityType>
+        <EntityType Name="unajmljena_oprema">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="koristenje_od" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="koristenje_do" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="tip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="osoba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="oprema_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="oprema" Relationship="Self.FK__unajmljen__oprem__6166761E" FromRole="unajmljena_oprema" ToRole="oprema" />
+        </EntityType>
+        <EntityType Name="usluga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tip" Type="Int32" Nullable="false" />
+          <Property Name="cijena" Type="Double" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="normativ_oprema" Relationship="Self.FK__normativ___uslug__756D6ECB" FromRole="usluga" ToRole="normativ_oprema" />
+          <NavigationProperty Name="normativ_osoblje" Relationship="Self.FK__normativ___uslug__55F4C372" FromRole="usluga" ToRole="normativ_osoblje" />
+          <NavigationProperty Name="posao_usluga" Relationship="Self.FK__posao_usl__uslug__3F115E1A" FromRole="usluga" ToRole="posao_usluga" />
+          <NavigationProperty Name="usluga_kategorija" Relationship="Self.FK__usluga__tip__59C55456" FromRole="usluga" ToRole="usluga_kategorija" />
+        </EntityType>
+        <EntityType Name="usluga_kategorija">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="uslugas" Relationship="Self.FK__usluga__tip__59C55456" FromRole="usluga_kategorija" ToRole="usluga" />
+        </EntityType>
+        <EntityType Name="zanimanje">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="osoblje_zanimanje" Relationship="Self.FK__osoblje_p__zanimanje__619B8048" FromRole="zanimanje" ToRole="osoblje_zanimanje" />
+        </EntityType>
+        <Association Name="FK__certifika__certi__66603565">
+          <End Role="certifikat" Type="Self.certifikat" Multiplicity="1" />
+          <End Role="certifikat_osoblje" Type="Self.certifikat_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="certifikat">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="certifikat_osoblje">
+              <PropertyRef Name="certifikat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__certifika__osobl__6754599E">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="certifikat_osoblje" Type="Self.certifikat_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="certifikat_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__oprem__6AEFE058">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="evidencija_oprema" Type="Self.evidencija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__posao__6BE40491">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="evidencija_oprema" Type="Self.evidencija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_oprema">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__osobl__45BE5BA9">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="evidencija_osoblje" Type="Self.evidencija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__evidencij__posao__46B27FE2">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="evidencija_osoblje" Type="Self.evidencija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evidencija_osoblje">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___natje__2FCF1A8A">
+          <End Role="natjecaj" Type="Self.natjecaj" Multiplicity="1" />
+          <End Role="natjecaj_ponuda" Type="Self.natjecaj_ponuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="natjecaj">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_ponuda">
+              <PropertyRef Name="natjecaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___natje__32AB8735">
+          <End Role="natjecaj" Type="Self.natjecaj" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_osoblje" Type="Self.natjecaj_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="natjecaj">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_osoblje">
+              <PropertyRef Name="natjecaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___natje__7849DB76">
+          <End Role="natjecaj" Type="Self.natjecaj" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_oprema" Type="Self.natjecaj_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="natjecaj">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_oprema">
+              <PropertyRef Name="natjecaj_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___trans__793DFFAF">
+          <End Role="transakcija_oprema" Type="Self.transakcija_oprema" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_oprema" Type="Self.natjecaj_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_oprema">
+              <PropertyRef Name="transakcija_oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__natjecaj___trans__339FAB6E">
+          <End Role="transakcija_osoblje" Type="Self.transakcija_osoblje" Multiplicity="1" />
+          <End Role="natjecaj_transakcija_osoblje" Type="Self.natjecaj_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="natjecaj_transakcija_osoblje">
+              <PropertyRef Name="transakcija_osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___oprem__74794A92">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="normativ_oprema" Type="Self.normativ_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___uslug__756D6ECB">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1" />
+          <End Role="normativ_oprema" Type="Self.normativ_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_oprema">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___osobl__55009F39">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="normativ_osoblje" Type="Self.normativ_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__normativ___uslug__55F4C372">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1" />
+          <End Role="normativ_osoblje" Type="Self.normativ_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="normativ_osoblje">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__oprema__referent__5E8A0973">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="0..1" />
+          <End Role="oprema1" Type="Self.oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="oprema1">
+              <PropertyRef Name="referentni_tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__skladiste__oprem__7C1A6C5A">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="skladiste_opreme" Type="Self.skladiste_opreme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skladiste_opreme">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transakci__oprem__6442E2C9">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="transakcija_oprema" Type="Self.transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transakcija_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__unajmljen__oprem__6166761E">
+          <End Role="oprema" Type="Self.oprema" Multiplicity="1" />
+          <End Role="unajmljena_oprema" Type="Self.unajmljena_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="unajmljena_oprema">
+              <PropertyRef Name="oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__osoblje_p__osobl__60A75C0F">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="osoblje_zanimanje" Type="Self.osoblje_zanimanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="osoblje_zanimanje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transakci__osobl__787EE5A0">
+          <End Role="osoblje" Type="Self.osoblje" Multiplicity="1" />
+          <End Role="transakcija_osoblje" Type="Self.transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transakcija_osoblje">
+              <PropertyRef Name="osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__osoblje_p__zanimanje__619B8048">
+          <End Role="zanimanje" Type="Self.zanimanje" Multiplicity="1" />
+          <End Role="osoblje_zanimanje" Type="Self.osoblje_zanimanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zanimanje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="osoblje_zanimanje">
+              <PropertyRef Name="zanimanje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__posao__4D5F7D71">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="posao_transakcija_osoblje" Type="Self.posao_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_osoblje">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__posao__671F4F74">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="posao_transakcija_oprema" Type="Self.posao_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_oprema">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_usl__posao__3E1D39E1">
+          <End Role="posao" Type="Self.posao" Multiplicity="1" />
+          <End Role="posao_usluga" Type="Self.posao_usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_usluga">
+              <PropertyRef Name="posao_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__trans__681373AD">
+          <End Role="transakcija_oprema" Type="Self.transakcija_oprema" Multiplicity="1" />
+          <End Role="posao_transakcija_oprema" Type="Self.posao_transakcija_oprema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_oprema">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_oprema">
+              <PropertyRef Name="transakcija_oprema_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_tra__trans__4E53A1AA">
+          <End Role="transakcija_osoblje" Type="Self.transakcija_osoblje" Multiplicity="1" />
+          <End Role="posao_transakcija_osoblje" Type="Self.posao_transakcija_osoblje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transakcija_osoblje">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_transakcija_osoblje">
+              <PropertyRef Name="transakcija_osoblje_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posao_usl__uslug__3F115E1A">
+          <End Role="usluga" Type="Self.usluga" Multiplicity="1" />
+          <End Role="posao_usluga" Type="Self.posao_usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posao_usluga">
+              <PropertyRef Name="usluga_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__skladiste__sklad__7D0E9093">
+          <End Role="skladiste" Type="Self.skladiste" Multiplicity="1" />
+          <End Role="skladiste_opreme" Type="Self.skladiste_opreme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="skladiste">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="skladiste_opreme">
+              <PropertyRef Name="skladiste_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__usluga__tip__59C55456">
+          <End Role="usluga_kategorija" Type="Self.usluga_kategorija" Multiplicity="1" />
+          <End Role="usluga" Type="Self.usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usluga_kategorija">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="usluga">
+              <PropertyRef Name="tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="certifikats" EntityType="Self.certifikat" />
+          <EntitySet Name="certifikat_osoblje" EntityType="Self.certifikat_osoblje" />
+          <EntitySet Name="evidencija_oprema" EntityType="Self.evidencija_oprema" />
+          <EntitySet Name="evidencija_osoblje" EntityType="Self.evidencija_osoblje" />
+          <EntitySet Name="natjecajs" EntityType="Self.natjecaj" />
+          <EntitySet Name="natjecaj_ponuda" EntityType="Self.natjecaj_ponuda" />
+          <EntitySet Name="natjecaj_transakcija_oprema" EntityType="Self.natjecaj_transakcija_oprema" />
+          <EntitySet Name="natjecaj_transakcija_osoblje" EntityType="Self.natjecaj_transakcija_osoblje" />
+          <EntitySet Name="normativ_oprema" EntityType="Self.normativ_oprema" />
+          <EntitySet Name="normativ_osoblje" EntityType="Self.normativ_osoblje" />
+          <EntitySet Name="opremas" EntityType="Self.oprema" />
+          <EntitySet Name="osobljes" EntityType="Self.osoblje" />
+          <EntitySet Name="osoblje_zanimanje" EntityType="Self.osoblje_zanimanje" />
+          <EntitySet Name="posaos" EntityType="Self.posao" />
+          <EntitySet Name="posao_transakcija_oprema" EntityType="Self.posao_transakcija_oprema" />
+          <EntitySet Name="posao_transakcija_osoblje" EntityType="Self.posao_transakcija_osoblje" />
+          <EntitySet Name="posao_usluga" EntityType="Self.posao_usluga" />
+          <EntitySet Name="skladistes" EntityType="Self.skladiste" />
+          <EntitySet Name="skladiste_opreme" EntityType="Self.skladiste_opreme" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="transakcija_oprema" EntityType="Self.transakcija_oprema" />
+          <EntitySet Name="transakcija_osoblje" EntityType="Self.transakcija_osoblje" />
+          <EntitySet Name="unajmljena_oprema" EntityType="Self.unajmljena_oprema" />
+          <EntitySet Name="uslugas" EntityType="Self.usluga" />
+          <EntitySet Name="usluga_kategorija" EntityType="Self.usluga_kategorija" />
+          <EntitySet Name="zanimanjes" EntityType="Self.zanimanje" />
+          <AssociationSet Name="FK__certifika__certi__66603565" Association="Self.FK__certifika__certi__66603565">
+            <End Role="certifikat" EntitySet="certifikats" />
+            <End Role="certifikat_osoblje" EntitySet="certifikat_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__certifika__osobl__6754599E" Association="Self.FK__certifika__osobl__6754599E">
+            <End Role="osoblje" EntitySet="osobljes" />
+            <End Role="certifikat_osoblje" EntitySet="certifikat_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__oprem__6AEFE058" Association="Self.FK__evidencij__oprem__6AEFE058">
+            <End Role="oprema" EntitySet="opremas" />
+            <End Role="evidencija_oprema" EntitySet="evidencija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__posao__6BE40491" Association="Self.FK__evidencij__posao__6BE40491">
+            <End Role="posao" EntitySet="posaos" />
+            <End Role="evidencija_oprema" EntitySet="evidencija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__osobl__45BE5BA9" Association="Self.FK__evidencij__osobl__45BE5BA9">
+            <End Role="osoblje" EntitySet="osobljes" />
+            <End Role="evidencija_osoblje" EntitySet="evidencija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__evidencij__posao__46B27FE2" Association="Self.FK__evidencij__posao__46B27FE2">
+            <End Role="posao" EntitySet="posaos" />
+            <End Role="evidencija_osoblje" EntitySet="evidencija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___natje__2FCF1A8A" Association="Self.FK__natjecaj___natje__2FCF1A8A">
+            <End Role="natjecaj" EntitySet="natjecajs" />
+            <End Role="natjecaj_ponuda" EntitySet="natjecaj_ponuda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___natje__32AB8735" Association="Self.FK__natjecaj___natje__32AB8735">
+            <End Role="natjecaj" EntitySet="natjecajs" />
+            <End Role="natjecaj_transakcija_osoblje" EntitySet="natjecaj_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___natje__7849DB76" Association="Self.FK__natjecaj___natje__7849DB76">
+            <End Role="natjecaj" EntitySet="natjecajs" />
+            <End Role="natjecaj_transakcija_oprema" EntitySet="natjecaj_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___trans__793DFFAF" Association="Self.FK__natjecaj___trans__793DFFAF">
+            <End Role="transakcija_oprema" EntitySet="transakcija_oprema" />
+            <End Role="natjecaj_transakcija_oprema" EntitySet="natjecaj_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__natjecaj___trans__339FAB6E" Association="Self.FK__natjecaj___trans__339FAB6E">
+            <End Role="transakcija_osoblje" EntitySet="transakcija_osoblje" />
+            <End Role="natjecaj_transakcija_osoblje" EntitySet="natjecaj_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___oprem__74794A92" Association="Self.FK__normativ___oprem__74794A92">
+            <End Role="oprema" EntitySet="opremas" />
+            <End Role="normativ_oprema" EntitySet="normativ_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___uslug__756D6ECB" Association="Self.FK__normativ___uslug__756D6ECB">
+            <End Role="usluga" EntitySet="uslugas" />
+            <End Role="normativ_oprema" EntitySet="normativ_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___osobl__55009F39" Association="Self.FK__normativ___osobl__55009F39">
+            <End Role="osoblje" EntitySet="osobljes" />
+            <End Role="normativ_osoblje" EntitySet="normativ_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__normativ___uslug__55F4C372" Association="Self.FK__normativ___uslug__55F4C372">
+            <End Role="usluga" EntitySet="uslugas" />
+            <End Role="normativ_osoblje" EntitySet="normativ_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__oprema__referent__5E8A0973" Association="Self.FK__oprema__referent__5E8A0973">
+            <End Role="oprema" EntitySet="opremas" />
+            <End Role="oprema1" EntitySet="opremas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__skladiste__oprem__7C1A6C5A" Association="Self.FK__skladiste__oprem__7C1A6C5A">
+            <End Role="oprema" EntitySet="opremas" />
+            <End Role="skladiste_opreme" EntitySet="skladiste_opreme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transakci__oprem__6442E2C9" Association="Self.FK__transakci__oprem__6442E2C9">
+            <End Role="oprema" EntitySet="opremas" />
+            <End Role="transakcija_oprema" EntitySet="transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__unajmljen__oprem__6166761E" Association="Self.FK__unajmljen__oprem__6166761E">
+            <End Role="oprema" EntitySet="opremas" />
+            <End Role="unajmljena_oprema" EntitySet="unajmljena_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__osoblje_p__osobl__60A75C0F" Association="Self.FK__osoblje_p__osobl__60A75C0F">
+            <End Role="osoblje" EntitySet="osobljes" />
+            <End Role="osoblje_zanimanje" EntitySet="osoblje_zanimanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transakci__osobl__787EE5A0" Association="Self.FK__transakci__osobl__787EE5A0">
+            <End Role="osoblje" EntitySet="osobljes" />
+            <End Role="transakcija_osoblje" EntitySet="transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__osoblje_p__zanimanje__619B8048" Association="Self.FK__osoblje_p__zanimanje__619B8048">
+            <End Role="zanimanje" EntitySet="zanimanjes" />
+            <End Role="osoblje_zanimanje" EntitySet="osoblje_zanimanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__posao__4D5F7D71" Association="Self.FK__posao_tra__posao__4D5F7D71">
+            <End Role="posao" EntitySet="posaos" />
+            <End Role="posao_transakcija_osoblje" EntitySet="posao_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__posao__671F4F74" Association="Self.FK__posao_tra__posao__671F4F74">
+            <End Role="posao" EntitySet="posaos" />
+            <End Role="posao_transakcija_oprema" EntitySet="posao_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_usl__posao__3E1D39E1" Association="Self.FK__posao_usl__posao__3E1D39E1">
+            <End Role="posao" EntitySet="posaos" />
+            <End Role="posao_usluga" EntitySet="posao_usluga" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__trans__681373AD" Association="Self.FK__posao_tra__trans__681373AD">
+            <End Role="transakcija_oprema" EntitySet="transakcija_oprema" />
+            <End Role="posao_transakcija_oprema" EntitySet="posao_transakcija_oprema" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_tra__trans__4E53A1AA" Association="Self.FK__posao_tra__trans__4E53A1AA">
+            <End Role="transakcija_osoblje" EntitySet="transakcija_osoblje" />
+            <End Role="posao_transakcija_osoblje" EntitySet="posao_transakcija_osoblje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posao_usl__uslug__3F115E1A" Association="Self.FK__posao_usl__uslug__3F115E1A">
+            <End Role="usluga" EntitySet="uslugas" />
+            <End Role="posao_usluga" EntitySet="posao_usluga" />
+          </AssociationSet>
+          <AssociationSet Name="FK__skladiste__sklad__7D0E9093" Association="Self.FK__skladiste__sklad__7D0E9093">
+            <End Role="skladiste" EntitySet="skladistes" />
+            <End Role="skladiste_opreme" EntitySet="skladiste_opreme" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usluga__tip__59C55456" Association="Self.FK__usluga__tip__59C55456">
+            <End Role="usluga_kategorija" EntitySet="usluga_kategorija" />
+            <End Role="usluga" EntitySet="uslugas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DbModels">
+          <EntitySetMapping Name="certifikats">
+            <EntityTypeMapping TypeName="Model.certifikat">
+              <MappingFragment StoreEntitySet="certifikat">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="certifikat_osoblje">
+            <EntityTypeMapping TypeName="Model.certifikat_osoblje">
+              <MappingFragment StoreEntitySet="certifikat_osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="certifikat_id" ColumnName="certifikat_id" />
+                <ScalarProperty Name="osoblje_id" ColumnName="osoblje_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evidencija_oprema">
+            <EntityTypeMapping TypeName="Model.evidencija_oprema">
+              <MappingFragment StoreEntitySet="evidencija_oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="oprema_id" ColumnName="oprema_id" />
+                <ScalarProperty Name="posao_id" ColumnName="posao_id" />
+                <ScalarProperty Name="dan" ColumnName="dan" />
+                <ScalarProperty Name="broj_sati" ColumnName="broj_sati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="evidencija_osoblje">
+            <EntityTypeMapping TypeName="Model.evidencija_osoblje">
+              <MappingFragment StoreEntitySet="evidencija_osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="osoblje_id" ColumnName="osoblje_id" />
+                <ScalarProperty Name="posao_id" ColumnName="posao_id" />
+                <ScalarProperty Name="dan" ColumnName="dan" />
+                <ScalarProperty Name="broj_sati" ColumnName="broj_sati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="natjecajs">
+            <EntityTypeMapping TypeName="Model.natjecaj">
+              <MappingFragment StoreEntitySet="natjecaj">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="raspisala_osoba" ColumnName="raspisala_osoba" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="iznos" ColumnName="iznos" />
+                <ScalarProperty Name="datum_od" ColumnName="datum_od" />
+                <ScalarProperty Name="datum_do" ColumnName="datum_do" />
+                <ScalarProperty Name="pobjednik" ColumnName="pobjednik" />
+                <ScalarProperty Name="prihvacen_iznos" ColumnName="prihvacen_iznos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="natjecaj_ponuda">
+            <EntityTypeMapping TypeName="Model.natjecaj_ponuda">
+              <MappingFragment StoreEntitySet="natjecaj_ponuda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="broj_osoblja" ColumnName="broj_osoblja" />
+                <ScalarProperty Name="iznos" ColumnName="iznos" />
+                <ScalarProperty Name="natjecaj_id" ColumnName="natjecaj_id" />
+                <ScalarProperty Name="dobitna_ponuda" ColumnName="dobitna_ponuda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="natjecaj_transakcija_oprema">
+            <EntityTypeMapping TypeName="Model.natjecaj_transakcija_oprema">
+              <MappingFragment StoreEntitySet="natjecaj_transakcija_oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="natjecaj_id" ColumnName="natjecaj_id" />
+                <ScalarProperty Name="transakcija_oprema_id" ColumnName="transakcija_oprema_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="natjecaj_transakcija_osoblje">
+            <EntityTypeMapping TypeName="Model.natjecaj_transakcija_osoblje">
+              <MappingFragment StoreEntitySet="natjecaj_transakcija_osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="natjecaj_id" ColumnName="natjecaj_id" />
+                <ScalarProperty Name="transakcija_osoblje_id" ColumnName="transakcija_osoblje_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="normativ_oprema">
+            <EntityTypeMapping TypeName="Model.normativ_oprema">
+              <MappingFragment StoreEntitySet="normativ_oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="oprema_id" ColumnName="oprema_id" />
+                <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="normativ_osoblje">
+            <EntityTypeMapping TypeName="Model.normativ_osoblje">
+              <MappingFragment StoreEntitySet="normativ_osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="osoblje_id" ColumnName="osoblje_id" />
+                <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="opremas">
+            <EntityTypeMapping TypeName="Model.oprema">
+              <MappingFragment StoreEntitySet="oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="inventarni_broj" ColumnName="inventarni_broj" />
+                <ScalarProperty Name="kupljena_vrijednost" ColumnName="kupljena_vrijednost" />
+                <ScalarProperty Name="knjigovodstvena_vrijednost" ColumnName="knjigovodstvena_vrijednost" />
+                <ScalarProperty Name="tip" ColumnName="tip" />
+                <ScalarProperty Name="dostupna" ColumnName="dostupna" />
+                <ScalarProperty Name="broj_radnih_sati" ColumnName="broj_radnih_sati" />
+                <ScalarProperty Name="referentni_tip" ColumnName="referentni_tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="osobljes">
+            <EntityTypeMapping TypeName="Model.osoblje">
+              <MappingFragment StoreEntitySet="osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="datum_rodjenja" ColumnName="datum_rodjenja" />
+                <ScalarProperty Name="zauzet" ColumnName="zauzet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="osoblje_zanimanje">
+            <EntityTypeMapping TypeName="Model.osoblje_zanimanje">
+              <MappingFragment StoreEntitySet="osoblje_zanimanje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="osoblje_id" ColumnName="osoblje_id" />
+                <ScalarProperty Name="zanimanje_id" ColumnName="zanimanje_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posaos">
+            <EntityTypeMapping TypeName="Model.posao">
+              <MappingFragment StoreEntitySet="posao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="grad" ColumnName="grad" />
+                <ScalarProperty Name="lokacija" ColumnName="lokacija" />
+                <ScalarProperty Name="sklopljen" ColumnName="sklopljen" />
+                <ScalarProperty Name="zavrsen" ColumnName="zavrsen" />
+                <ScalarProperty Name="trajanje_od" ColumnName="trajanje_od" />
+                <ScalarProperty Name="trajanje_do" ColumnName="trajanje_do" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posao_transakcija_oprema">
+            <EntityTypeMapping TypeName="Model.posao_transakcija_oprema">
+              <MappingFragment StoreEntitySet="posao_transakcija_oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="posao_id" ColumnName="posao_id" />
+                <ScalarProperty Name="transakcija_oprema_id" ColumnName="transakcija_oprema_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posao_transakcija_osoblje">
+            <EntityTypeMapping TypeName="Model.posao_transakcija_osoblje">
+              <MappingFragment StoreEntitySet="posao_transakcija_osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="posao_id" ColumnName="posao_id" />
+                <ScalarProperty Name="transakcija_osoblje_id" ColumnName="transakcija_osoblje_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posao_usluga">
+            <EntityTypeMapping TypeName="Model.posao_usluga">
+              <MappingFragment StoreEntitySet="posao_usluga">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="posao_id" ColumnName="posao_id" />
+                <ScalarProperty Name="usluga_id" ColumnName="usluga_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skladistes">
+            <EntityTypeMapping TypeName="Model.skladiste">
+              <MappingFragment StoreEntitySet="skladiste">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="adresa" ColumnName="adresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="skladiste_opreme">
+            <EntityTypeMapping TypeName="Model.skladiste_opreme">
+              <MappingFragment StoreEntitySet="skladiste_opreme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="skladiste_id" ColumnName="skladiste_id" />
+                <ScalarProperty Name="oprema_id" ColumnName="oprema_id" />
+                <ScalarProperty Name="broj_na_polici" ColumnName="broj_na_polici" />
+                <ScalarProperty Name="polica" ColumnName="polica" />
+                <ScalarProperty Name="stalak" ColumnName="stalak" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transakcija_oprema">
+            <EntityTypeMapping TypeName="Model.transakcija_oprema">
+              <MappingFragment StoreEntitySet="transakcija_oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="prihod" ColumnName="prihod" />
+                <ScalarProperty Name="trosak" ColumnName="trosak" />
+                <ScalarProperty Name="oprema_id" ColumnName="oprema_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transakcija_osoblje">
+            <EntityTypeMapping TypeName="Model.transakcija_osoblje">
+              <MappingFragment StoreEntitySet="transakcija_osoblje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="prihod" ColumnName="prihod" />
+                <ScalarProperty Name="trosak" ColumnName="trosak" />
+                <ScalarProperty Name="osoblje_id" ColumnName="osoblje_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unajmljena_oprema">
+            <EntityTypeMapping TypeName="Model.unajmljena_oprema">
+              <MappingFragment StoreEntitySet="unajmljena_oprema">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="koristenje_od" ColumnName="koristenje_od" />
+                <ScalarProperty Name="koristenje_do" ColumnName="koristenje_do" />
+                <ScalarProperty Name="tip" ColumnName="tip" />
+                <ScalarProperty Name="osoba" ColumnName="osoba" />
+                <ScalarProperty Name="oprema_id" ColumnName="oprema_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uslugas">
+            <EntityTypeMapping TypeName="Model.usluga">
+              <MappingFragment StoreEntitySet="usluga">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tip" ColumnName="tip" />
+                <ScalarProperty Name="cijena" ColumnName="cijena" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usluga_kategorija">
+            <EntityTypeMapping TypeName="Model.usluga_kategorija">
+              <MappingFragment StoreEntitySet="usluga_kategorija">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zanimanjes">
+            <EntityTypeMapping TypeName="Model.zanimanje">
+              <MappingFragment StoreEntitySet="zanimanje">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

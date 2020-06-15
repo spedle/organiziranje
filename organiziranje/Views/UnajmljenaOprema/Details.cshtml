@@ -1,0 +1,58 @@
+﻿@model organiziranje.Models.unajmljena_oprema
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>unajmljena_oprema</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.koristenje_od)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.koristenje_od)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.koristenje_do)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.koristenje_do)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.osoba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.osoba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oprema.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oprema.naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
