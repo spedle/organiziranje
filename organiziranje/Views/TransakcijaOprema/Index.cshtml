@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.trosak)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.oprema.naziv)
+            @Html.ActionLink(item.oprema.naziv, "Details", "Oprema", new { id = item.oprema.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

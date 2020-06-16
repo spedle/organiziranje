@@ -41,10 +41,10 @@
             @Html.DisplayFor(modelItem => item.stalak)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.oprema.naziv)
+            @Html.ActionLink(item.oprema.naziv, "Details", "Oprema", new { id = item.oprema.id }, null);
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.skladiste.naziv)
+            @Html.ActionLink(item.skladiste.naziv, "Details", "Skladiste", new { id = item.skladiste.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

@@ -32,7 +32,7 @@
             @Html.DisplayFor(modelItem => item.opis)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.usluga_kategorija.naziv)
+            @Html.ActionLink(item.usluga_kategorija.naziv, "Details", "UslugaKategorija", new { id = item.usluga_kategorija.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

@@ -23,6 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.posao.grad)
         </th>
+        <th>
+            Lokacija
+        </th>
         <th></th>
     </tr>
 
@@ -35,11 +38,14 @@
             @Html.DisplayFor(modelItem => item.broj_sati)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.osoblje.ime)
+            @Html.ActionLink(item.osoblje.ime, "Details", "Osoblje", new { id = item.osoblje.id }, null);
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.posao.grad)
         </td>
+        <th>
+            @Html.ActionLink(item.posao.lokacija, "Details", "Posao", new { id = item.posao.id }, null);
+        </th>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |

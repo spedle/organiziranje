@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.osoblje.ime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.usluga.opis)
+            Usluga
         </th>
         <th></th>
     </tr>
@@ -23,10 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.osoblje.ime)
+            @Html.ActionLink(item.osoblje.ime, "Details", "Osoblje", new { id = item.osoblje.id }, null);
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.usluga.opis)
+            @Html.ActionLink(item.usluga.usluga_kategorija.naziv, "Details", "Usluga", new { id = item.usluga.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

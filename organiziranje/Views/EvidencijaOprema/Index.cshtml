@@ -18,10 +18,16 @@
             @Html.DisplayNameFor(model => model.broj_sati)
         </th>
         <th>
+            Inventarni broj
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.oprema.naziv)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.posao.grad)
+        </th>
+        <th>
+            Lokacija
         </th>
         <th></th>
     </tr>
@@ -35,10 +41,16 @@
             @Html.DisplayFor(modelItem => item.broj_sati)
         </td>
         <td>
+            @Html.ActionLink(item.oprema.inventarni_broj, "Details", "Oprema", new { id = item.oprema.id }, null);
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.oprema.naziv)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.posao.grad)
+        </td>
+        <td>
+            @Html.ActionLink(item.posao.lokacija, "Details", "Posao", new { id = item.posao.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

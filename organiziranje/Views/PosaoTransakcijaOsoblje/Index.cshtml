@@ -12,7 +12,13 @@
 <table class="table">
     <tr>
         <th>
+            ID posla
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.posao.grad)
+        </th>
+        <th>
+            Lokacija
         </th>
         <th>
             @Html.DisplayNameFor(model => model.transakcija_osoblje.osoblje.ime)
@@ -23,10 +29,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.posao.grad)
+            @Html.DisplayFor(modelItem => item.posao.id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.transakcija_osoblje.osoblje.ime)
+            @Html.ActionLink(item.posao.grad, "Details", "Posao", new { id = item.posao.id }, null);
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.posao.lokacija)
+        </td>
+        <td>
+            @Html.ActionLink(item.transakcija_osoblje.osoblje.ime, "Details", "Osoblje", new { id = item.transakcija_osoblje.osoblje.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

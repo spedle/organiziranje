@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.trosak)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.osoblje.ime)
+            @Html.ActionLink(item.osoblje.ime, "Details", "Osoblje", new { id = item.osoblje.id }, null);
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

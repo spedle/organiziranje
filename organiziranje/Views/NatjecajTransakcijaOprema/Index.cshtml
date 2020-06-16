@@ -12,10 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.natjecaj.raspisala_osoba)
+            ID natjecaja
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.transakcija_oprema.oprema.inventarni_broj)
+            Pobjednik
+        </th>
+        <th>
+            Raspisao
+        </th>
+        <th>
+           Broj opreme
+        </th>
+        <th>
+            Naziv opreme
         </th>
         <th></th>
     </tr>
@@ -23,10 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.natjecaj.id)
+        </td>
+        <td>
+            @Html.ActionLink(item.natjecaj.pobjednik, "Details", "Natjecaj", new { id = item.natjecaj.id }, null);
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.natjecaj.raspisala_osoba)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.transakcija_oprema.oprema.inventarni_broj)
+            @Html.ActionLink(item.transakcija_oprema.oprema.inventarni_broj, "Details", "Oprema", new { id = item.transakcija_oprema.oprema.id }, null);
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.transakcija_oprema.oprema.naziv)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
