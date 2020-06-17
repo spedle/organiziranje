@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.trajanje_do)
         </th>
+        <th>
+            Zavrsi posao
+        </th>
         <th></th>
     </tr>
 
@@ -51,6 +54,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.trajanje_do)
+        </td>
+        <td>
+            @if (item.zavrsen == "N")
+            {
+                @Html.ActionLink("Zavrsi posao", "FinishJob", new { id = item.id })
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

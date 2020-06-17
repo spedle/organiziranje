@@ -131,6 +131,57 @@ namespace organiziranje.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult FinishJob(int? id)
+        {
+            IList<posao_usluga> posao_uslugas = db.posao_usluga.Where(o => o.posao_id == id).ToList();
+
+
+            foreach (posao_usluga posao_usluga in posao_uslugas)
+            {
+                IList<normativ_osoblje> normativOsobljes = posao_usluga.usluga.normativ_osoblje.ToList();
+                IList<normativ_oprema> normativOpremas = posao_usluga.usluga.normativ_oprema.ToList();
+
+                var posao = posao_usluga.posao;
+                foreach (normativ_oprema normativOprema in normativOpremas)
+                {
+                    var oprema = normativOprema.oprema;
+                    oprema.dostupna = "D";
+                    db.Entry(oprema).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    transakcija_oprema transakcijaOprema = new transakcija_oprema();
+                    transakcijaOprema.prihod = normativOprema.oprema.kupljena_vrijednost / normativOprema.oprema.broj_radnih_sati;
+                    transakcijaOprema.datum = DateTime.Now;
+                    transakcijaOprema.oprema_id = normativOprema.oprema_id;
+                    transakcijaOprema.trosak = 0;
+                    db.transakcija_oprema.Add(transakcijaOprema);
+                    db.SaveChanges();
+
+                    posao_transakcija_oprema posaoTransakcijaOprema = new posao_transakcija_oprema();
+                    posaoTransakcijaOprema.posao_id = posao.id;
+                    posaoTransakcijaOprema.transakcija_oprema_id = transakcijaOprema.id;
+                    db.posao_transakcija_oprema.Add(posaoTransakcijaOprema);
+                    db.SaveChanges();
+
+                    DateTime trajanje_od = posao.trajanje_od;
+                    DateTime trajanje_do = posao.trajanje_do;
+                    double brojSati = trajanje_do.Subtract(trajanje_od).TotalHours;
+
+                    evidencija_oprema evidenacijaOprema = new evidencija_oprema();
+                    evidenacijaOprema.broj_sati = Convert.ToInt32(brojSati);
+                    evidenacijaOprema.dan = Convert.ToByte(trajanje_od.Day);
+                    evidenacijaOprema.posao_id = posao.id;
+                    evidenacijaOprema.oprema_id = oprema.id;
+                    db.evidencija_oprema.Add(evidenacijaOprema);
+                    db.SaveChanges();
+                }
+
+                posao.zavrsen = "D";
+                db.Entry(posao).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
