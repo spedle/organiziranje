@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div style="text-align:right">@Html.ActionLink("Print opremu po natječaju", "printAll")</div>
 <table class="table">
     <tr>
         <th>
@@ -21,7 +22,7 @@
             Raspisao
         </th>
         <th>
-           Broj opreme
+            Broj opreme
         </th>
         <th>
             Naziv opreme
@@ -29,29 +30,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.natjecaj.id)
-        </td>
-        <td>
-            @Html.ActionLink(item.natjecaj.pobjednik, "Details", "Natjecaj", new { id = item.natjecaj.id }, null);
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.natjecaj.raspisala_osoba)
-        </td>
-        <td>
-            @Html.ActionLink(item.transakcija_oprema.oprema.inventarni_broj, "Details", "Oprema", new { id = item.transakcija_oprema.oprema.id }, null);
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.transakcija_oprema.oprema.naziv)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.natjecaj.id)
+            </td>
+            <td>
+                @Html.ActionLink(item.natjecaj.pobjednik, "Details", "Natjecaj", new { id = item.natjecaj.id }, null);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.natjecaj.raspisala_osoba)
+            </td>
+            <td>
+                @Html.ActionLink(item.transakcija_oprema.oprema.inventarni_broj, "Details", "Oprema", new { id = item.transakcija_oprema.oprema.id }, null);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.transakcija_oprema.oprema.naziv)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

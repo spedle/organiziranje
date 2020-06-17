@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using organiziranje.Models;
+using Rotativa;
 
 namespace organiziranje.Controllers
 {
@@ -19,6 +20,12 @@ namespace organiziranje.Controllers
         {
             var posao_transakcija_oprema = db.posao_transakcija_oprema.Include(p => p.posao).Include(p => p.transakcija_oprema);
             return View(posao_transakcija_oprema.ToList());
+        }
+
+        public ActionResult printAll()
+        {
+            var report = new ActionAsPdf("Index");
+            return report;
         }
 
         // GET: PosaoTransakcijaOprema/Details/5

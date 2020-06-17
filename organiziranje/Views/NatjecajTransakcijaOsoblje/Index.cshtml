@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div style="text-align:right">@Html.ActionLink("Print osoblje po natječaju", "printAll")</div>
 <table class="table">
     <tr>
         <th>
@@ -26,26 +27,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.natjecaj.id)
-        </td>
-        <td>
-            @Html.ActionLink(item.natjecaj.pobjednik, "Details", "Natjecaj", new { id = item.natjecaj.id }, null);
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.natjecaj.raspisala_osoba)
-        </td>
-        <td>
-            @Html.ActionLink(item.transakcija_osoblje.osoblje.ime, "Details", "Natjecaj", new { id = item.transakcija_osoblje.osoblje.id }, null);
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.natjecaj.id)
+            </td>
+            <td>
+                @Html.ActionLink(item.natjecaj.pobjednik, "Details", "Natjecaj", new { id = item.natjecaj.id }, null);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.natjecaj.raspisala_osoba)
+            </td>
+            <td>
+                @Html.ActionLink(item.transakcija_osoblje.osoblje.ime, "Details", "Natjecaj", new { id = item.transakcija_osoblje.osoblje.id }, null);
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

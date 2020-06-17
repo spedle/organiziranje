@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using organiziranje.Models;
+using Rotativa;
 
 namespace organiziranje.Controllers
 {
@@ -19,6 +20,12 @@ namespace organiziranje.Controllers
         {
             var evidencija_osoblje = db.evidencija_osoblje.Include(e => e.osoblje).Include(e => e.posao);
             return View(evidencija_osoblje.ToList());
+        }
+
+        public ActionResult printAll()
+        {
+            var report = new ActionAsPdf("Index");
+            return report;
         }
 
         // GET: EvidencijaOsoblje/Details/5

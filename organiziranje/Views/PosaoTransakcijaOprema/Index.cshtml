@@ -9,6 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div style="text-align:right">@Html.ActionLink("Print opremu po poslovima", "printAll")</div>
 <table class="table">
     <tr>
         <th>
@@ -26,26 +27,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.posao.id)
-        </td>
-        <td>
-            @Html.ActionLink(item.posao.grad, "Details", "Posao", new { id = item.posao.id }, null);
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.posao.lokacija)
-        </td>
-        <td>
-            @Html.ActionLink(item.transakcija_oprema.oprema.inventarni_broj, "Details", "Oprema", new { id = item.transakcija_oprema.oprema.id }, null);
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.posao.id)
+            </td>
+            <td>
+                @Html.ActionLink(item.posao.grad, "Details", "Posao", new { id = item.posao.id }, null);
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.posao.lokacija)
+            </td>
+            <td>
+                @Html.ActionLink(item.transakcija_oprema.oprema.inventarni_broj, "Details", "Oprema", new { id = item.transakcija_oprema.oprema.id }, null);
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

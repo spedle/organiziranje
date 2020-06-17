@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using organiziranje.Models;
+using Rotativa;
 
 namespace organiziranje.Controllers
 {
@@ -21,6 +22,11 @@ namespace organiziranje.Controllers
             return View(posao_transakcija_osoblje.ToList());
         }
 
+        public ActionResult printAll()
+        {
+            var report = new ActionAsPdf("Index");
+            return report;
+        }
         // GET: PosaoTransakcijaOsoblje/Details/5
         public ActionResult Details(int? id)
         {
