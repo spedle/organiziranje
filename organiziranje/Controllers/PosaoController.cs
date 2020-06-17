@@ -50,6 +50,14 @@ namespace organiziranje.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (posao.zavrsen.Length != 1)
+                {
+                    throw new Exception("Duljina polja završen mora biti točno 1");
+                }
+                if (posao.sklopljen.Length != 1)
+                {
+                    throw new Exception("Duljina polja sklopljen mora biti točno 1");
+                }
                 db.posaos.Add(posao);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +90,14 @@ namespace organiziranje.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (posao.zavrsen.Length != 1)
+                {
+                    throw new Exception("Duljina polja završen mora biti točno 1");
+                }
+                if (posao.sklopljen.Length != 1)
+                {
+                    throw new Exception("Duljina polja sklopljen mora biti točno 1");
+                }
                 db.Entry(posao).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
