@@ -54,6 +54,11 @@ namespace organiziranje.Controllers
             {
                 db.opremas.Add(oprema);
                 db.SaveChanges();
+                if (oprema.referentni_tip == null)
+                {
+                    oprema.referentni_tip = oprema.id;
+                }
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -87,6 +92,11 @@ namespace organiziranje.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(oprema).State = EntityState.Modified;
+                db.SaveChanges();
+                if (oprema.referentni_tip == null)
+                {
+                    oprema.referentni_tip = oprema.id;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
