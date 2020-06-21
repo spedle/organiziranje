@@ -50,9 +50,15 @@ namespace organiziranje.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,posao_id,usluga_id")] posao_usluga posao_usluga)
-        {
+        {   
             if (ModelState.IsValid)
             {
+                posao posao = db.posaos.Where(p => p.id == posao_usluga.posao_id).First();
+
+                if(posao.sklopljen == "D" && posao.zavrsen == "N")
+                {
+                    this.occupy(posao_usluga.usluga_id);
+                }
                 db.posao_usluga.Add(posao_usluga);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -122,6 +128,31 @@ namespace organiziranje.Controllers
             db.posao_usluga.Remove(posao_usluga);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public void occupy(int usluga_id)
+        {
+            IList<normativ_oprema> normativOpremas = db.normativ_oprema.Where(no => no.usluga_id == usluga_id).ToList();
+            IList<normativ_osoblje> normativOsobljes = db.normativ_osoblje.Where(no => no.usluga_id == usluga_id).ToList();
+
+            foreach (normativ_oprema normativOprema in normativOpremas)
+            {
+                IList<oprema> opremas = db.opremas.Where(o => o.tip == normativOprema.oprema.tip).Where(o => o.dostupna == "D").ToList();
+                oprema oprema = opremas.First();
+                oprema.dostupna = "N";
+
+                db.Entry(oprema).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            foreach (normativ_osoblje normativOsoblje in normativOsobljes)
+            {
+                osoblje osoblje = normativOsoblje.osoblje;
+                osoblje.zauzet = "D";
+
+                db.Entry(osoblje).State = EntityState.Modified;
+                db.SaveChanges();
+            }
         }
 
         protected override void Dispose(bool disposing)
