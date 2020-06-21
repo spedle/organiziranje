@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Reflection;
 using System.Web.Mvc;
 using organiziranje.Models;
 
@@ -34,6 +34,22 @@ namespace organiziranje.Controllers
                 return HttpNotFound();
             }
             return View(oprema);
+        }
+
+        public void updateRefTip(int? id, int? noviRefTip)
+        {
+            int? stariRefTip = db.opremas.Find(id).referentni_tip;
+            List<oprema> opremaPoRefTipu = db.opremas.Where(o => o.referentni_tip == stariRefTip).ToList();
+            opremaPoRefTipu.ForEach(o =>
+            {
+                if (o.id != id)
+                {
+                    o.referentni_tip = noviRefTip;
+                    db.Entry(o).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            });
+            db.Dispose();
         }
 
         // GET: Oprema/Create
@@ -91,13 +107,11 @@ namespace organiziranje.Controllers
         {
             if (ModelState.IsValid)
             {
+                updateRefTip(oprema.id, oprema.referentni_tip);
+                db = new DbModels();
                 db.Entry(oprema).State = EntityState.Modified;
                 db.SaveChanges();
-                if (oprema.referentni_tip == null)
-                {
-                    oprema.referentni_tip = oprema.id;
-                }
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             ViewBag.referentni_tip = new SelectList(db.opremas, "id", "naziv", oprema.referentni_tip);
