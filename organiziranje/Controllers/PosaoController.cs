@@ -179,6 +179,14 @@ namespace organiziranje.Controllers
                 posao.zavrsen = "D";
                 db.Entry(posao).State = EntityState.Modified;
                 db.SaveChanges();
+
+                foreach (normativ_osoblje normativOsoblje in normativOsobljes)
+                {
+                    var osoblje = normativOsoblje.osoblje;
+                    osoblje.zauzet = "N";
+                    db.Entry(osoblje).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("Index");
         }
