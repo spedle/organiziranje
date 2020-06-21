@@ -181,7 +181,8 @@ namespace organiziranje.Controllers
                 db.SaveChanges();
 
                 foreach (normativ_osoblje normativOsoblje in normativOsobljes)
-                {
+                {   
+
                     var osoblje = normativOsoblje.osoblje;
                     osoblje.zauzet = "N";
                     db.Entry(osoblje).State = EntityState.Modified;

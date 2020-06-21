@@ -143,7 +143,6 @@ namespace organiziranje.Controllers
 
                 db.Entry(oprema).State = EntityState.Modified;
                 db.SaveChanges();
-
             }
 
             foreach (normativ_osoblje normativOsoblje in normativOsobljes)
