@@ -52,6 +52,8 @@ namespace organiziranje.Controllers
         {
             if (ModelState.IsValid)
             {
+                oprema oprema = db.opremas.Find(transakcija_oprema.oprema_id);
+                transakcija_oprema.oprema_id = (int) oprema.referentni_tip;
                 db.transakcija_oprema.Add(transakcija_oprema);
                 db.SaveChanges();
                 return RedirectToAction("Index");
