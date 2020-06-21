@@ -9,88 +9,86 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
+    <nav class="navbar navbar-inverse">
+        <ul class="nav navbar-nav">
+            <li>
                 @Html.ActionLink("Organi za organiziranje", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Osoblje
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Osoblje", "Index", "Osoblje")</li>
-                        <li>@Html.ActionLink("Certifikati", "Index", "Certifikat")</li>
-                        <li>@Html.ActionLink("Zanimanja", "Index", "Zanimanje")</li>
-                        <li>@Html.ActionLink("Osoblje Certifikat", "Index", "CertifikatOsoblje")</li>
-                        <li>@Html.ActionLink("Osoblje Zanimanje", "Index", "OsobljeZanimanje")</li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Oprema
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Oprema", "Index", "Oprema")</li>
-                        <li>@Html.ActionLink("Unajmljena Oprema", "Index", "UnajmljenaOprema")</li>
-                        <li>@Html.ActionLink("Skladiste", "Index", "Skladiste")</li>
-                        <li>@Html.ActionLink("Skladiste Oprema", "Index", "SkladisteOprema")</li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Transakcija
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Transakcija Opreme", "Index", "TransakcijaOprema")</li>
-                        <li>@Html.ActionLink("Transakcija Osoblja", "Index", "TransakcijaOsoblje")</li>
-                        <li>@Html.ActionLink("Poslovi Oprema", "Index", "PosaoTransakcijaOprema")</li>
-                        <li>@Html.ActionLink("Poslovi Osoblje", "Index", "PosaoTransakcijaOsoblje")</li>
-                        <li>@Html.ActionLink("Natjecaj Oprema", "Index", "NatjecajTransakcijaOprema")</li>
-                        <li>@Html.ActionLink("Natjecaj Osoblje", "Index", "NatjecajTransakcijaOsoblje")</li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Usluge Poslovi
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Posao", "Index", "Posao")</li>
-                        <li>@Html.ActionLink("Usluga", "Index", "Usluga")</li>
-                        <li>@Html.ActionLink("Kategorija Usluga", "Index", "UslugaKategorija")</li>
-                        <li>@Html.ActionLink("Posao Usluga", "Index", "PosaoUsluga")</li>
-                        <li>@Html.ActionLink("Normativ Opreme", "Index", "NormativOprema")</li>
-                        <li>@Html.ActionLink("Normativ Osoblja", "Index", "NormativOsoblje")</li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Evidencija
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Evidencija Opreme", "Index", "EvidencijaOprema")</li>
-                        <li>@Html.ActionLink("Evidencija Osoblja", "Index", "EvidencijaOsoblje")</li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Natjecaj
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Natjecaj", "Index", "Natjecaj")</li>
-                        <li>@Html.ActionLink("Natjecaj Ponuda", "Index", "NatjecajPonuda")</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+            </li>
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Osoblje
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Osoblje", "Index", "Osoblje")</li>
+                    <li>@Html.ActionLink("Certifikati", "Index", "Certifikat")</li>
+                    <li>@Html.ActionLink("Zanimanja", "Index", "Zanimanje")</li>
+                    <li>@Html.ActionLink("Osoblje Certifikat", "Index", "CertifikatOsoblje")</li>
+                    <li>@Html.ActionLink("Osoblje Zanimanje", "Index", "OsobljeZanimanje")</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Oprema
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Oprema", "Index", "Oprema")</li>
+                    <li>@Html.ActionLink("Unajmljena Oprema", "Index", "UnajmljenaOprema")</li>
+                    <li>@Html.ActionLink("Skladiste", "Index", "Skladiste")</li>
+                    <li>@Html.ActionLink("Skladiste Oprema", "Index", "SkladisteOprema")</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Transakcija
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Transakcija Opreme", "Index", "TransakcijaOprema")</li>
+                    <li>@Html.ActionLink("Transakcija Osoblja", "Index", "TransakcijaOsoblje")</li>
+                    <li>@Html.ActionLink("Poslovi Oprema", "Index", "PosaoTransakcijaOprema")</li>
+                    <li>@Html.ActionLink("Poslovi Osoblje", "Index", "PosaoTransakcijaOsoblje")</li>
+                    <li>@Html.ActionLink("Natjecaj Oprema", "Index", "NatjecajTransakcijaOprema")</li>
+                    <li>@Html.ActionLink("Natjecaj Osoblje", "Index", "NatjecajTransakcijaOsoblje")</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Usluge Poslovi
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Posao", "Index", "Posao")</li>
+                    <li>@Html.ActionLink("Usluga", "Index", "Usluga")</li>
+                    <li>@Html.ActionLink("Kategorija Usluga", "Index", "UslugaKategorija")</li>
+                    <li>@Html.ActionLink("Posao Usluga", "Index", "PosaoUsluga")</li>
+                    <li>@Html.ActionLink("Normativ Opreme", "Index", "NormativOprema")</li>
+                    <li>@Html.ActionLink("Normativ Osoblja", "Index", "NormativOsoblje")</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Evidencija
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Evidencija Opreme", "Index", "EvidencijaOprema")</li>
+                    <li>@Html.ActionLink("Evidencija Osoblja", "Index", "EvidencijaOsoblje")</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Natjecaj
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Natjecaj", "Index", "Natjecaj")</li>
+                    <li>@Html.ActionLink("Natjecaj Ponuda", "Index", "NatjecajPonuda")</li>
+                </ul>
+            </li>
+        </ul>
     </nav>
     <div class="container body-content">
         @RenderBody()
@@ -99,7 +97,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
